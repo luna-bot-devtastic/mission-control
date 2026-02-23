@@ -1,0 +1,23 @@
+{
+  "tasks": [
+    {
+      "id": "task_welcome",
+      "title": "🎯 Welcome to Mission Control",
+      "description": "Your Kanban board is ready!\n\n**Your columns:**\n• Backlog → Ideas and upcoming work\n• InProgress → Currently being worked on\n• in review → Completed, awaiting your approval\n• done → Finished and approved\n\n**How to use:**\n1. Create tasks in Backlog\n2. Drag to InProgress when ready to work\n3. I get notified and start working\n4. I move to in review when done\n5. You review and move to done (or back for fixes)",
+      "status": "backlog",
+      "project": "default",
+      "tags": ["welcome"],
+      "subtasks": [],
+      "priority": "low",
+      "comments": [],
+      "createdAt": "2026-02-21T00:00:00Z"
+    }
+  ],
+  "projects": [
+    { "id": "default", "name": "Devtastic", "color": "#3b82f6", "icon": "🚀" }
+  ],
+  "activities": [
+    { "type": "created", "actor": "Luna", "task": "Welcome to Mission Control", "time": "just now" }
+  ],
+  "lastUpdated": "2026-02-21T00:00:00Z"
+}
