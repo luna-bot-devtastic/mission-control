@@ -1,0 +1,50 @@
+{
+  "tasks": [
+    {
+      "id": "task_welcome",
+      "title": "🎯 Welcome to Mission Control",
+      "description": "Your Kanban board is ready!\n\n**Your columns:**\n• Backlog → Ideas and upcoming work\n• InProgress → Currently being worked on\n• in review → Completed, awaiting your approval\n• done → Finished and approved\n\n**How to use:**\n1. Create tasks in Backlog\n2. Drag to InProgress when ready to work\n3. I get notified and start working\n4. I move to in review when done\n5. You review and move to done (or back for fixes)\n\n**NEW: Assignee & Due Dates**\n- Assignee: Who's working on it (Luna, Riki, Samuru, Ed)\n- Due Date: When it needs to be done",
+      "status": "backlog",
+      "project": "default",
+      "tags": ["welcome"],
+      "subtasks": [],
+      "priority": "low",
+      "assignee": null,
+      "dueDate": null,
+      "comments": [],
+      "createdAt": "2026-02-21T00:00:00Z"
+    },
+    {
+      "id": "sereno-timeline-revision",
+      "title": "📋 Revise Sereno Planner Timeline (Early Access March 31)",
+      "description": "Create a feasible timeline for Sereno Planner leading to early access launch on March 31 and full launch end of April.\n\n**Constraints:**\n- Ed has a full-time job (juggling this on the side)\n- March 31: Early access launch\n- April 30: Full launch\n- Samuru developing alongside Ed\n\n**Deliverables:**\n1. Revised timeline with realistic milestones\n2. Task breakdown for Ed + Samuru\n3. Pre-launch checklist\n4. Early access signup flow plan\n5. Code distribution strategy (early access codes)",
+      "status": "in_progress",
+      "project": "sereno",
+      "tags": ["timeline", "planning", "launch"],
+      "subtasks": [
+        { "id": "sub_001", "title": "Analyze current Sereno state vs goals", "done": false },
+        { "id": "sub_002", "title": "Draft feasible milestone schedule", "done": false },
+        { "id": "sub_003", "title": "Break down tasks for Ed (FT job constraint)", "done": false },
+        { "id": "sub_004", "title": "Break down tasks for Samuru", "done": false },
+        { "id": "sub_005", "title": "Create pre-launch checklist", "done": false },
+        { "id": "sub_006", "title": "Plan early access signup flow", "done": false },
+        { "id": "sub_007", "title": "Document code redemption system", "done": false }
+      ],
+      "priority": "high",
+      "assignee": "Riki",
+      "dueDate": "2026-02-25",
+      "comments": [],
+      "createdAt": "2026-02-23T07:35:00Z"
+    }
+  ],
+  "projects": [
+    { "id": "default", "name": "Devtastic", "color": "#3b82f6", "icon": "🚀" },
+    { "id": "sereno", "name": "Sereno Planner", "color": "#10b981", "icon": "📅" }
+  ],
+  "activities": [
+    { "type": "created", "actor": "Luna", "task": "Welcome to Mission Control", "time": "just now" },
+    { "type": "created", "actor": "Luna", "task": "Revise Sereno Planner Timeline", "time": "just now" },
+    { "type": "assigned", "actor": "Luna", "task": "Revise Sereno Planner Timeline", "assignee": "Riki", "time": "just now" }
+  ],
+  "lastUpdated": "2026-02-23T07:35:00Z"
+}

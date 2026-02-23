@@ -949,6 +949,28 @@
         .task-tag.project-b { background: #8b5cf620; color: #8b5cf6; }
         .task-tag.system { background: #6b728020; color: #9ca3af; }
 
+        .task-assignee-due {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        .task-assignee {
+            background: var(--bg-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .task-due-date {
+            background: var(--bg-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        .task-due-date.overdue {
+            background: #ef444420;
+            color: #ef4444;
+        }
+
         .tag-chip {
             display: inline-flex;
             align-items: center;
@@ -2712,6 +2734,22 @@
                         </select>
                     </div>
                 </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label class="form-label">Assignee</label>
+                        <select class="form-input" id="task-assignee">
+                            <option value="">Unassigned</option>
+                            <option value="Ed">👤 Ed</option>
+                            <option value="Luna">🔥 Luna</option>
+                            <option value="Riki">📋 Riki</option>
+                            <option value="Samuru">🥷 Samuru</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Due Date</label>
+                        <input type="date" class="form-input" id="task-due-date">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label class="form-label">Project</label>
                     <select class="form-input" id="task-project">
@@ -3863,6 +3901,12 @@
                         </div>
                         ${commentIndicator}
                     </div>
+                    ${(task.assignee || task.dueDate) ? `
+                        <div class="task-assignee-due">
+                            ${task.assignee ? `<span class="task-assignee" title="Assigned to">👤 ${task.assignee}</span>` : ''}
+                            ${task.dueDate ? `<span class="task-due-date ${new Date(task.dueDate) < new Date() ? 'overdue' : ''}" title="Due date">📅 ${new Date(task.dueDate).toLocaleDateString()}</span>` : ''}
+                        </div>
+                    ` : ''}
                     ${subtasksTotal > 0 ? `
                         <div class="task-subtasks">
                             <div class="subtask-progress">
@@ -4677,6 +4721,8 @@
             document.getElementById('task-status').value = task.isTemplate ? (task.baseStatus || 'backlog') : task.status;
             document.getElementById('task-priority').value = task.priority;
             document.getElementById('task-project').value = task.project;
+            document.getElementById('task-assignee').value = task.assignee || '';
+            document.getElementById('task-due-date').value = task.dueDate ? task.dueDate.split('T')[0] : '';
             document.getElementById('btn-delete-task').style.display = 'block';
             
             // Show/hide "As Cron" button based on task type
@@ -4965,6 +5011,8 @@
             document.getElementById('task-status').value = status;
             document.getElementById('task-priority').value = 'medium';
             document.getElementById('task-project').value = 'system';
+            document.getElementById('task-assignee').value = '';
+            document.getElementById('task-due-date').value = '';
             document.getElementById('btn-delete-task').style.display = 'none';
 
             // Reset tags
@@ -4990,6 +5038,8 @@
             const status = document.getElementById('task-status').value;
             const priority = document.getElementById('task-priority').value;
             const project = document.getElementById('task-project').value;
+            const assignee = document.getElementById('task-assignee').value || null;
+            const dueDate = document.getElementById('task-due-date').value ? new Date(document.getElementById('task-due-date').value).toISOString() : null;
             const tags = currentTaskTags.length > 0 ? [...currentTaskTags] : [project];
 
             if (!title) {
@@ -5005,6 +5055,8 @@
                     task.description = description;
                     task.priority = priority;
                     task.project = project;
+                    task.assignee = assignee;
+                    task.dueDate = dueDate;
                     task.tags = tags.length > 0 ? tags : [project];
                     
                     if (isEditingTemplate) {
@@ -5023,6 +5075,8 @@
                     tags: tags.length > 0 ? tags : [project],
                     subtasks: [],
                     priority: priority,
+                    assignee: assignee,
+                    dueDate: dueDate,
                     createdAt: new Date().toISOString()
                 };
                 
