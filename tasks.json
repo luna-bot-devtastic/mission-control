@@ -33,7 +33,13 @@
       "priority": "high",
       "assignee": "Riki",
       "dueDate": "2026-02-25",
-      "comments": [],
+      "comments": [
+        {
+          "author": "Luna",
+          "text": "Task ready for Riki. Will spawn on next heartbeat. Ed's constraints: FT job, March 31 early access, April 30 full launch. Samuru co-developing.",
+          "timestamp": "2026-02-23T07:40:00Z"
+        }
+      ],
       "createdAt": "2026-02-23T07:35:00Z"
     }
   ],
@@ -46,5 +52,5 @@
     { "type": "created", "actor": "Luna", "task": "Revise Sereno Planner Timeline", "time": "just now" },
     { "type": "assigned", "actor": "Luna", "task": "Revise Sereno Planner Timeline", "assignee": "Riki", "time": "just now" }
   ],
-  "lastUpdated": "2026-02-23T07:35:00Z"
+  "lastUpdated": "2026-02-23T07:40:00Z"
 }
